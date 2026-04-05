@@ -41,3 +41,5 @@ public class Curso {
    this.descripcion = descripcion;
 }
 }
+
+//Probando como se ve en la Web a la hora de agregar curso
