@@ -8,6 +8,17 @@ package modelo;
  *
  * @author josue
  */
-public class Usuario {
+public abstract class Usuario {
+    protected int id;
+    protected String nombre;
+    protected String correo;
+    protected String password;
     
+   public Usuario(int id, String nombre, String correo, String password ){
+       this.id = id;
+       this.nombre = nombre;
+       this.correo = correo;
+       this.password = password;
+   }
+    public abstract String getTipo();
 }
