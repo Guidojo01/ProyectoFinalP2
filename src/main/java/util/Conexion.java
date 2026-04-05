@@ -11,18 +11,21 @@ import java.sql.*;
  * @author josue
  */
 public class Conexion {
-   static String url= "jdbc:mysql://localhost:3306/edustream";
+   static String url = "jdbc:mysql://localhost:3306/edustream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
    static String user= "root";
-   static String pass= "1234";
+   static String pass= "1234";   
+
     
     public static Connection conectar()
     {
          Connection con= null;
          try 
-         {
+         { 
+             Class.forName("com.mysql.cj.jdbc.Driver");
+         
          con=DriverManager.getConnection(url, user, pass);
               System.out.println("Conexion Exitosa");
-         }catch(SQLException e)
+         }catch(Exception e)
          {
          e.printStackTrace();
          System.out.println("Conexion fallida");

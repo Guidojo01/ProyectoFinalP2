@@ -9,6 +9,8 @@ package modelo;
  * @author josue
  */
 public class Estudiante extends Usuario {
+    public Estudiante(){
+    }
     
     public Estudiante(int id, String nombre, String correo, String password ){
     super(id, nombre, correo, password);
