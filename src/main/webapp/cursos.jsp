@@ -21,6 +21,7 @@
 
     <h3>Agregar curso</h3>
     <form action="CursoServlet" method="post">
+        <input type="hidden" name="accion" value="guardar">
         Nombre: <input type="text" name="nombre" required><br>
         Descripción: <input type="text" name="descripcion" required><br>
         <button type="submit">Guardar curso</button>
@@ -36,6 +37,7 @@
     %>
         <p>
             <b><%= c.getNombre() %></b> - <%= c.getDescripcion() %>
+            <a href="CursoServlet?accion=editar&id=<%= c.getId() %>"> Editar</a>
             <a href="CursoServlet?accion=eliminar&id=<%= c.getId() %>"> Eliminar</a>
         </p>
     <%

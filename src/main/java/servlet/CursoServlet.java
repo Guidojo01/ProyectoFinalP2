@@ -19,6 +19,12 @@ public class CursoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
+    
+    String accion = request.getParameter("accion");
+   
+    CursoDAO dao = new CursoDAO();
+   
+    if("guardar".equals(accion)){
     String nombre = request.getParameter("nombre");
     String descripcion = request.getParameter("descripcion");
     
@@ -26,8 +32,19 @@ public class CursoServlet extends HttpServlet {
     curso.setNombre(nombre);
     curso.setDescricion(descripcion);
     
-    CursoDAO dao = new CursoDAO();
     dao.agregarCurso(curso);
+    }else if ("actualizar".equals(accion)){
+    int id = Integer.parseInt(request.getParameter("id"));
+    String nombre = request.getParameter("nombre");
+    String descripcion = request.getParameter("descripcion");
+    
+    Curso curso = new Curso();
+    curso.setId(id);
+    curso.setNombre(nombre);
+    curso.setDescricion(descripcion);
+    
+    dao.actualizarCurso(curso);
+    }
     
     response.sendRedirect("cursos.jsp");
     }
@@ -35,14 +52,18 @@ public class CursoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
     String accion = request.getParameter("accion");
+    CursoDAO dao = new CursoDAO();
     
     if("eliminar".equals(accion)){
     int id = Integer.parseInt(request.getParameter("id"));
-    
-    CursoDAO dao = new CursoDAO();
     dao.eliminarCurso(id);
-    
     response.sendRedirect("cursos.jsp");
+    } else if ("editar".equals(accion)){
+    int id = Integer.parseInt(request.getParameter("id"));
+    Curso curso = dao.obtenerCurso(id);
+    
+    request.setAttribute("curso" , curso);
+    request.getRequestDispatcher("editarCurso.jsp").forward(request, response);
     }
     }
     
