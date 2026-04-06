@@ -50,4 +50,19 @@ public class CursoDAO {
     }
     return lista;
     }
+    public void eliminarCurso(int id){
+    try{
+    Connection conectar = Conexion.conectar();
+    String sql = "DELETE FROM cursos WHERE id=?";
+    PreparedStatement ps = conectar.prepareStatement(sql);
+    ps.setInt(1, id);
+    ps.executeUpdate();
+    
+    System.out.println("Curso eliminado con exito");
+    
+    }catch(Exception e){
+    e.printStackTrace();
+    }
+    }
+    
 }

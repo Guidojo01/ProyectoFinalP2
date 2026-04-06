@@ -20,17 +20,32 @@ public class CursoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
     String nombre = request.getParameter("nombre");
-    String description = request.getParameter("descripcion");
+    String descripcion = request.getParameter("descripcion");
     
     Curso curso = new Curso();
     curso.setNombre(nombre);
-    curso.setDescricion(description);
+    curso.setDescricion(descripcion);
     
     CursoDAO dao = new CursoDAO();
     dao.agregarCurso(curso);
     
     response.sendRedirect("cursos.jsp");
     }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+    String accion = request.getParameter("accion");
+    
+    if("eliminar".equals(accion)){
+    int id = Integer.parseInt(request.getParameter("id"));
+    
+    CursoDAO dao = new CursoDAO();
+    dao.eliminarCurso(id);
+    
+    response.sendRedirect("cursos.jsp");
+    }
+    }
+    
 }
     
 

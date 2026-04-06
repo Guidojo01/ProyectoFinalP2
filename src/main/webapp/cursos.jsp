@@ -35,9 +35,8 @@
         for (Curso c : lista) {
     %>
         <p>
-            <b>ID:</b> <%= c.getId() %>
-            - <b>Nombre:</b> <%= c.getNombre() %>
-            - <b>Descripción:</b> <%= c.getDescripcion() %>
+            <b><%= c.getNombre() %></b> - <%= c.getDescripcion() %>
+            <a href="CursoServlet?accion=eliminar&id=<%= c.getId() %>"> Eliminar</a>
         </p>
     <%
         }

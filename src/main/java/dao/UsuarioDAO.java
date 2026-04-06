@@ -32,7 +32,7 @@ public class UsuarioDAO {
 if (rs.next()) {
     System.out.println(" CORREO EXISTE");
 
-    String passBD = rs.getString("password"); // o contraseña
+    String passBD = rs.getString("password"); 
     String tipo= rs.getString("tipo");
     System.out.println("Password BD: " + passBD);
     //System.out.println("Password ingresado: " + password);
