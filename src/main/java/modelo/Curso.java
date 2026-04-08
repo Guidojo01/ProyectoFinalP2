@@ -37,7 +37,7 @@ public class Curso {
    public void setNombre(String nombre){
    this.nombre = nombre;
 }
-   public void setDescricion(String descripcion){
+   public void setDescripcion(String descripcion){
    this.descripcion = descripcion;
 }
 }

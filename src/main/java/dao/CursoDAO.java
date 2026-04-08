@@ -41,7 +41,7 @@ public class CursoDAO {
         Curso c = new Curso();
         c.setId(rs.getInt("id"));
         c.setNombre(rs.getString("Nombre"));
-        c.setDescricion(rs.getString("descripcion"));
+        c.setDescripcion(rs.getString("descripcion"));
         lista.add(c);
         }
     
@@ -78,7 +78,7 @@ public class CursoDAO {
         c = new Curso();
         c.setId(rs.getInt("id"));
         c.setNombre(rs.getString("nombre"));
-        c.setDescricion(rs.getString("descripcion"));
+        c.setDescripcion(rs.getString("descripcion"));
         }
     
     }catch (Exception e){

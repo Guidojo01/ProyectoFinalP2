@@ -9,13 +9,21 @@
 <%@page import="modelo.Curso"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%
+    if(session.getAttribute("usuario") == null){
+    response.sendRedirect("login.jsp");
+    return;
+    }
+    %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Cursos</title>
 </head>
 <body>
-
+    <div style="text-align: right";>
+    <a href="LogoutServlet">Cerrar sesion</a>
+    </div>
     <h2>Bienvenido</h2>
     <p>Login exitoso</p>
 

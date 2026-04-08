@@ -20,6 +20,12 @@ public class CursoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
     
+        HttpSession session = request.getSession(false);
+        
+        if(session == null || session.getAttribute("usuario") == null){
+        response.sendRedirect("login.jsp");
+        return;
+        }
     String accion = request.getParameter("accion");
    
     CursoDAO dao = new CursoDAO();
@@ -30,7 +36,7 @@ public class CursoServlet extends HttpServlet {
     
     Curso curso = new Curso();
     curso.setNombre(nombre);
-    curso.setDescricion(descripcion);
+    curso.setDescripcion(descripcion);
     
     dao.agregarCurso(curso);
     }else if ("actualizar".equals(accion)){
@@ -41,7 +47,7 @@ public class CursoServlet extends HttpServlet {
     Curso curso = new Curso();
     curso.setId(id);
     curso.setNombre(nombre);
-    curso.setDescricion(descripcion);
+    curso.setDescripcion(descripcion);
     
     dao.actualizarCurso(curso);
     }
@@ -51,6 +57,13 @@ public class CursoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
+        HttpSession session = request.getSession(false);
+        
+        if(session == null || session.getAttribute("usuario") == null){
+        response.sendRedirect("login.jsp");
+        return;
+        }
+        
     String accion = request.getParameter("accion");
     CursoDAO dao = new CursoDAO();
     
